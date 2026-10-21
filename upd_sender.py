@@ -21,4 +21,4 @@ with open(FILE, "rb") as f:
 for _ in range(3):
     sock.sendto(b"END", addr)
     time.sleep(0.05)
-print(f"Sent '{FILE}': {size} bytes in {packets} packets")
+print(f"Sent this file which is  '{FILE}': {size} bytes in {packets} these packets")

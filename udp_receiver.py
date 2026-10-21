@@ -4,7 +4,7 @@ PORT = 9000
 os.makedirs("received", exist_ok=True)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(("0.0.0.0", PORT))
-print(f"Receiver listening on UDP port {PORT} ...")
+print(f"Receiver is now listening on UDP port {PORT} ...")
 
 while True:
     data, addr = sock.recvfrom(2048)
@@ -25,7 +25,7 @@ with open(os.path.join("received", name), "wb") as f:
             f.write(data)
             got += len(data)
     except socket.timeout:
-        print("Timed out waiting for data.")
+        print("Timed out and we are waiting for data.")
 
-print(f"Saved received/{name}: {got}/{size} bytes")
-print("Transfer complete." if got == size else "WARNING: some bytes were lost (plain UDP).")
+print(f"Saved received file/{name}: {got}/{size} bytes")
+print("Transfer complete, here " if got == size else "WARNING: some bytes were lost (plain UDP).")
